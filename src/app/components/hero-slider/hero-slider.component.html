@@ -1,0 +1,37 @@
+<div [ngClass]="{'hb-all':true,'sp': bannerData.subPage }">
+<div class="header-bottom">
+  <div class="carousel-content-panels text-center">
+    <div class="banner-all">
+      <div class="owl-carousel-inner">
+
+
+        <div class="item" *ngFor="let banner of bannerData.bannerData">
+          <img [src]="banner.image" alt="1" class="img-fluid bb" width="100%">
+          <div class="carousel-content-panel text-center">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div [ngClass]="{'banner-text':true,'inner':bannerData.subPage}">
+                    <h3>{{banner.heading}}</h3>
+                    <p *ngIf="banner.subheading">{{banner.subheading}}</p>
+                    <ul class="list-inline" *ngIf="banner.buttons">
+                      <li *ngFor="let button of banner.buttons; let even = even; let odd = odd">
+                        <a [routerLink]="button.link" class="btn" [ngClass]="{ 'btn-make2': odd, 'btn-make1': even }">
+                          {{button.text}} <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  
+      </div>
+    </div>
+  </div>
+</div>
+<app-header-step-banner *ngIf="bannerData.stepper"></app-header-step-banner>
+</div>
